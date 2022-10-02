@@ -9,6 +9,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .tieude{
+            font-size: 40px;
+          
+        }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -21,42 +27,43 @@
                 </ul>
             </div>
         @endif
+        <h1 class="tieude">Thêm Sản Phẩm</h1>
+        <br>
         <div class="form-groupp">
-            <form action="{{route('cars.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('foods.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <h1>Thêm mới xe</h1>
-                <label for="">Description</label>
-                {{-- <textarea name="description" id="description" cols="30" rows="10"></textarea> --}}
+                <label for="">Tên Sản Phẩm:</label>
+                <input type="text" name="name" id="" class="form-control">
+                <br/>   
+                 <div class="form-group">
+                    <label for="">Loại Sản Phẩm :</label>
+                    <select class="custom-select" name="category_id" id="">
+                        <option selected>Chọn loại sản phẩm</option>
+                        @foreach($categorys as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                       @endforeach
+                    </select>
+                 </div>
+                 <label for="">Giá :</label>
+                <input type="text" name="price" id="" class="form-control">
+                <br/>   
+                <label for="">Giá Khuyến Mãi:</label>
+                <input type="text" name="sale_price" id="" class="form-control">
+                <br/>   
+                <label for="">Xuất Sử :</label>
+                <input type="text" name="origin" id="" class="form-control">
+                <br/>   
+                <label for="">Tiêu Chuẩn :</label>
+                <input type="text" name="standard" id="" class="form-control">
+                <br/>   
+ 
+
+                <input type="file" name="image" id="image" accept="image/*">
+                <br>
+                <label for="">Mô Tả</label>
+                {{-- <textarea name="description" id="description" cols="30" rows="50"></textarea> --}}
                 <input type="text" name="description" id="" class="form-control">
                 <br/>   
-                <label for="">Model:</label>
-                <input type="text" name="model" id="" class="form-control">
-                <br/>   
-
-                <label for="">Produced_on:</label>
-                <input type="date" name="produced_on" id="" class="form-control">
-                <br/>   
-
-                <label for="">Image:</label>
-                <img id="image" src="" alt="" name="image" width="200">
-                <input type="file" class="form-control-file" id="" placeholder="" name="image-file" onchange="changeImage(event)"s>
-                <script type="text/javascript">
-                    const changeImage = (e) =>{
-                        const img = document.getElementById('image');
-                        const file = e.target.files[0]
-                        img.src = URL.createObjectURL(file);
-                    }
-                </script>
-                <br/>   
-
-                <label for="">ManuFactory</label>
-                @if(isset($mfs))
-                <select name="mf_id" id="" class="form-control">
-                    @foreach($mfs as $mf)
-                    <option value="{{ $mf->id }}">{{ $mf->mf_name }}</option>
-                    @endforeach
-                </select>
-                @endif
                 <input type="submit" class="btn btn-primary" value="Thêm mới">
             </form>
         </div>

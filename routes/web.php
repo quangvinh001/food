@@ -25,3 +25,4 @@ Route::get('/create', function () {
 
 
 Route::resource('foods', FoodController::class);
+

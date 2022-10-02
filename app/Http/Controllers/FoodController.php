@@ -36,7 +36,8 @@ class FoodController extends Controller
      */
     public function create()
     {
-        return view('food.create', ['categories' => Category::all()]);
+        $categorys=Category::all();
+        return view('food.create',compact('categorys'));
     }
 
     /**
@@ -48,38 +49,30 @@ class FoodController extends Controller
     public function store(Request $request)
     {
           //
-          $request->validate([
-            'name'=>'required',
-            'image' => 'mimes:jpeg,jpg,png,gif|max:10000',
-            'price' => 'required',
-            'sale_price' => 'required',
-            'description' => 'required',
-        ]);
+          $attributes = request()->validate(
+            [
+                'name' => 'required|max:100',
+                'price' => 'required|min:10000|integer',
+                'sale_price' => 'integer|lt:price',
+                'category_id' => 'required|exists:categories,id',
+                'description' => 'required',
+                'origin' => 'required',
+                'standard' => 'required',
+                'image' => 'required|image'
+            ]
+        );
 
-        [
-            'name.required' => 'Ban chua nhap thong tin san pham',
-            'image_file.minmes' => 'Chi chap nhan anh voi dung kich thuoc',
-            'image_file.max' => 'Anh gioi han dung luong khoang 10000',
-            'price.required' => 'Chua nhap gia',
-            'sale_price.required' => 'Chua nhap gia khuyen mai',
-            'description.required' => 'Chua nhap mo ta',
-        ]; //kiểm tra file tồn tại
-        $name='';
-        if($request->hasfile('image_file'))
-        {
-            $file = $request->file('image_file');
-            $name=time().'_'.$file->getClientOriginalName();
-            $destinationPath=public_path('imgs'); //project\public\car, //public_path(): trả về đường dẫn tới thư mục public
-            $file->move($destinationPath, $name); //lưu hình ảnh vào thư mục public/images/cars
+        $name = '';
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $name = time() . '_' . $file->getClientOriginalName();
+            $destinationPath = public_path('images');
+            // dd($destinationPath);
+            $file->move($destinationPath, $name);
         }
-            $food=new Food();
-            $food->name=$request->input('name');
-            $food->gia=$request->input('price');
-            $food->gia_km=$request->input('sale_price');
-            $food->category_id=$request->input('category_id');
-            $food->image=$name;
-            $food->save();
-            return redirect('foods')->with('success','Bạn đã thêm thành công');
+        $attributes['image'] = $name;
+        Food::create($attributes);
+        return redirect('foods')->with('success', 'Bạn đã thêm thành công');
     }
 
     /**
