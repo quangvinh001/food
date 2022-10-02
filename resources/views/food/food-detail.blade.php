@@ -360,24 +360,12 @@ img.emoji {
                 	</div>
 					<div id="protab-xuat_xu_tab" class="pro-tabcontent" style="display: none;">
 				<h2>Xuất xứ</h2>
-                <p>{{ $food->description }}</p>
+                <p>{{ $food->origin }}</p>
 
                 	</div>
 					<div id="protab-tieu_chuan_tab" class="pro-tabcontent" style="display: none;">
-				<h2>Tiêu chuẩn</h2><p>NHỮNG CÔNG DỤNG CỰC KỲ QUÝ CỦA RAU BẮP CẢI</p>
-<p>Vào mùa đông, loại rau xanh được các gia đình hay sử dụng nhất, có lẽ là bắp cải. Bắp cải không những là một loại rau bổ dưỡng mà còn là vị thuốc quý được sử dụng nhiều trong dân gian.</p>
-<p>Công dụng chữa bệnh của rau cải bắp hữu cơ:</p>
-<p>+Bắp cải là loại thuốc trị giun tốt: Dùng đắp ngoài để tẩy uế và làm liền sẹo các vết thương, mụn nhọt, các vết thương độc, đồng thời là loại thuốc trừ sâu bọ đốt (ong, ong vò vẽ, nhện&#8230;).</p>
-<p>+Bắp cải còn là loại thuốc dịu đau trong bệnh thấp khớp, thống phong, đau dây thần kinh hông (lấy các lá bắp cải rồi dùng bàn là ủi cho mềm, sau đó đắp lên các phần bị đau). Bắp cải làm sạch đường hô hấp bằng cách hoặc dùng đắp (trị viêm họng khản tiếng) hoặc uống trong (ho, viêm sưng phổi).</p>
-<p>+Bắp cải cũng là thuốc chống hoại huyết, trị lỵ và cung cấp cho cơ thể một yếu tố quan trọng là lưu huỳnh (S). Nước bắp cải dùng lọc máu.</p>
-<p>Cuối cùng, bắp cải là loại thuốc mạnh để chống kích thích thần kinh và chứng mất ngủ. Những người hay lo âu, các thí sinh đi thi, các người bị suy nhược thần kinh, những người mệt mỏi liên miên nên dùng bắp cải thường xuyên.</p>
-<p>NHỮNG CÔNG DỤNG CỰC KỲ QUÝ CỦA RAU BẮP CẢI</p>
-<p>Vào mùa đông, loại rau xanh được các gia đình hay sử dụng nhất, có lẽ là bắp cải. Bắp cải không những là một loại rau bổ dưỡng mà còn là vị thuốc quý được sử dụng nhiều trong dân gian.</p>
-<p>Công dụng chữa bệnh của rau cải bắp hữu cơ:</p>
-<p>+Bắp cải là loại thuốc trị giun tốt: Dùng đắp ngoài để tẩy uế và làm liền sẹo các vết thương, mụn nhọt, các vết thương độc, đồng thời là loại thuốc trừ sâu bọ đốt (ong, ong vò vẽ, nhện&#8230;).</p>
-<p>+Bắp cải còn là loại thuốc dịu đau trong bệnh thấp khớp, thống phong, đau dây thần kinh hông (lấy các lá bắp cải rồi dùng bàn là ủi cho mềm, sau đó đắp lên các phần bị đau). Bắp cải làm sạch đường hô hấp bằng cách hoặc dùng đắp (trị viêm họng khản tiếng) hoặc uống trong (ho, viêm sưng phổi).</p>
-<p>+Bắp cải cũng là thuốc chống hoại huyết, trị lỵ và cung cấp cho cơ thể một yếu tố quan trọng là lưu huỳnh (S). Nước bắp cải dùng lọc máu.</p>
-<p>Cuối cùng, bắp cải là loại thuốc mạnh để chống kích thích thần kinh và chứng mất ngủ. Những người hay lo âu, các thí sinh đi thi, các người bị suy nhược thần kinh, những người mệt mỏi liên miên nên dùng bắp cải thường xuyên.</p>
+				<h2>Tiêu chuẩn</h2><p>{{ $food->standard }}</p>
+
                 			</div>
 					<div id="protab-reviews" class="pro-tabcontent" style="display: none;">
 				<div id="reviews" class="woocommerce-Reviews">
